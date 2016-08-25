@@ -16,7 +16,7 @@ public class TestFecha {
     public void fechaValida() {
         Fecha testFecha =  new Fecha();
         Assert.assertEquals(
-                testFecha.edad("08/04/1996"),"20 años, 4 meses y 17 días"
+                testFecha.edad("25/07/1998"),/*"20 años, 4 meses y 17 días"*/"18 años, 1 meses y 0 días"
         );
     }
 
@@ -56,7 +56,7 @@ public class TestFecha {
     public void fechaFutura() {
         Fecha testFecha =  new Fecha();
         Assert.assertEquals(
-                testFecha.edad("26/08/2016"),"Esa es una Fecha Futura"
+                testFecha.edad("25/08/2017"),"Esa es una Fecha Futura"
         );
     }
 }
