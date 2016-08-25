@@ -104,8 +104,68 @@ public class Fecha {
 				dias = dias - dia;
 			} else if (dias == dia)
 				dias = 0;
-		} else if (meses == mes && dias < dia)
-			anyos--;
+		} else if (meses == mes)  {
+			if (dias < dia)
+				anyos--;
+			else if (dias == dia) {
+				meses = 0;
+				dias = 0;
+			} else if (dias > dia) {
+				meses = 0;
+				dias -= dia;
+			}
+		} else if (meses > mes) {
+			if (dias > dia) {
+				meses -= mes;
+				dias -= dia;
+			} else if (dias == dia) {
+				meses -= mes;
+				dias = 0;
+			}
+			else {
+				meses--;
+				switch (mesAct) {
+					case 1:
+						dias = 31 - dias + dia;
+						break;
+					case 2:
+						dias = 28 - dias + dia;
+						if ((anyos+1+anyo%4==0 && anyos+1+anyo%100!=0) || anyos+1+anyo%400==0)
+							dias++;
+						break;
+					case 3:
+						dias = 31 - dias + dia;
+						break;
+					case 4:
+						dias = 30 - dias + dia;
+						break;
+					case 5:
+						dias = 31 - dias + dia;
+						break;
+					case 6:
+						dias = 30 - dias + dia;
+						break;
+					case 7:
+						dias = 31 - dias + dia;
+						break;
+					case 8:
+						dias = 31 - dias + dia;
+						break;
+					case 9:
+						dias = 30 - dias + dia;
+						break;
+					case 10:
+						dias = 31 - dias + dia;
+						break;
+					case 11:
+						dias = 30 - dias + dia;
+						break;
+					case 12:
+						dias = 31 - dias + dia;
+						break;
+				}
+			}
+		}
 		
 		String retorno = anyos + " años, " + meses + " meses y " + dias + " días";
 		return retorno;
